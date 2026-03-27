@@ -185,13 +185,22 @@ const { error } = await supabase.from('bookings').insert([
   }
 
   if (!user) {
-    return <Login />
-  }
+  return (
+    <div style={{ padding: 20 }}>
+      <h1>🏡 Dudi Village Sóc Sơn</h1>
+      <p>Không gian nghỉ dưỡng giữa thiên nhiên</p>
+
+      <button onClick={() => setUser({ id: 'guest' })}>
+        Xem phòng ngay
+      </button>
+    </div>
+  )
+}
 
   return (
 <div>
   <img
-    src="https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+    src=""
     style={{
       width: '100%',
       height: '300px',
