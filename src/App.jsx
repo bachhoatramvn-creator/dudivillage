@@ -185,8 +185,15 @@ const { error } = await supabase.from('bookings').insert([
   }
 
   if (!user) {
-    return <Login />
-  }
+  return (
+    <div>
+      <h2>Đặt phòng nhanh</h2>
+      <button onClick={() => supabase.auth.signInWithOtp({ email: 'test@gmail.com' })}>
+        Tiếp tục
+      </button>
+    </div>
+  )
+}
 
   return (
     <div style={{ padding: 20 }}>
@@ -203,6 +210,10 @@ const { error } = await supabase.from('bookings').insert([
 <p>💰 Tổng doanh thu: {stats.revenue} VND</p>
 <p>🏦 Nền tảng thu: {stats.platformRevenue} VND</p>
 <p>🏡 Trả cho host: {stats.hostPayout} VND</p>
+<img 
+  src="https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+  style={{ width: '100%', borderRadius: 12 }}
+/>
           <p>🏡 Tổng phòng: {stats.totalRooms}</p>
           <p>📅 Tổng booking: {stats.totalBookings}</p>
           <p>💰 Doanh thu: {stats.revenue} VND</p>
