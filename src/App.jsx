@@ -185,17 +185,26 @@ const { error } = await supabase.from('bookings').insert([
   }
 
   if (!user) {
-  return (
-    <div>
-      <h2>Đặt phòng nhanh</h2>
-      <button onClick={() => supabase.auth.signInWithOtp({ email: 'test@gmail.com' })}>
-        Tiếp tục
-      </button>
-    </div>
-  )
-}
+    return <Login />
+  }
 
   return (
+<div>
+  <img
+    src="https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+    style={{
+      width: '100%',
+      height: '300px',
+      objectFit: 'cover',
+      borderRadius: 12
+    }}
+  />
+</div>
+<div style={{ marginTop: -100, color: 'white', padding: 20 }}>
+  <h1>🏡 Dudi Village Sóc Sơn</h1>
+  <p>Không gian nghỉ dưỡng giữa thiên nhiên</p>
+  <p>🔥 Giá từ 500k/đêm</p>
+</div>
     <div style={{ padding: 20 }}>
       <h3>USER: {user.email}</h3>
       <h3>ROLE: {role}</h3>
@@ -204,16 +213,12 @@ const { error } = await supabase.from('bookings').insert([
         Đăng xuất
       </button>
 
-      {role === 'admin' && (
+      {role === 'admin' && false && (
         <div style={{ border: '2px solid red', padding: 20, margin: 20 }}>
           <h2>📊 Admin Dashboard</h2>
 <p>💰 Tổng doanh thu: {stats.revenue} VND</p>
 <p>🏦 Nền tảng thu: {stats.platformRevenue} VND</p>
 <p>🏡 Trả cho host: {stats.hostPayout} VND</p>
-<img 
-  src="https://images.unsplash.com/photo-1505691938895-1758d7feb511"
-  style={{ width: '100%', borderRadius: 12 }}
-/>
           <p>🏡 Tổng phòng: {stats.totalRooms}</p>
           <p>📅 Tổng booking: {stats.totalBookings}</p>
           <p>💰 Doanh thu: {stats.revenue} VND</p>
@@ -301,6 +306,8 @@ const { error } = await supabase.from('bookings').insert([
           </div>
         )
       })}
+<p>🌿 View thiên nhiên</p>
+<p>🔥 Cuối tuần dễ hết phòng</p>
     </div>
   )
 }
